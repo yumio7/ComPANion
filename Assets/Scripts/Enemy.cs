@@ -8,10 +8,17 @@ public class Enemy : MonoBehaviour
 {
     private SpawnNode _spawnNode;
     private Vector3 _initialDestination;
+    
+    [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float distance;
+
+    [Header("Projectile")] 
+    [SerializeField] private GameObject projectile;
+    
     private Transform _target;
     private Vector3 _destination;
+    
     private bool _hasChanged;
     private bool _isChef;
 
@@ -88,6 +95,7 @@ public class Enemy : MonoBehaviour
 
     private void ThrowProjectile()
     {
-        
+        var transform1 = transform;
+        Instantiate(projectile, transform1.position, transform1.rotation);
     }
 }
