@@ -9,7 +9,7 @@ public class VegeController : MonoBehaviour
 {
     // [Header("Rigidbody")]
     private Rigidbody2D _rb;
-    private PanRotate _pan;
+    private PanBehavior _pan;
 
     [Header("Movement")] [SerializeField] 
     private float moveSpeed;
@@ -21,7 +21,7 @@ public class VegeController : MonoBehaviour
 
     private void Awake()
     {
-        _pan = GetComponentInChildren<PanRotate>();
+        _pan = GetComponentInChildren<PanBehavior>();
     }
 
     private void Start()

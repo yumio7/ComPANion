@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanRotate : MonoBehaviour
+public class PanBehavior : MonoBehaviour
 {
     public Vector2 PointerPos { get; set; }
 
