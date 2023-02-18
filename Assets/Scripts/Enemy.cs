@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private bool _hasChanged;
     private bool _isChef;
 
+    private int _healthPoints;
+
     
     private enum EnemyType
     {
@@ -36,14 +38,17 @@ public class Enemy : MonoBehaviour
             case EnemyType.Rat:
                 _target = GameObject.FindGameObjectWithTag("Player").transform;
                 _isChef = false;
+                _healthPoints = 1;
                 break;
             case EnemyType.Vegetable:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = false;
+                _healthPoints = 1;
                 break;
             case EnemyType.Chef:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = true;
+                _healthPoints = 2;
                 break;
         }
     }
@@ -70,5 +75,10 @@ public class Enemy : MonoBehaviour
         {
             this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
         }
+    }
+
+    public void TakeDamage(int amt)
+    {
+        _healthPoints -= amt;
     }
 }
