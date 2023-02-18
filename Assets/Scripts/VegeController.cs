@@ -36,6 +36,11 @@ public class VegeController : MonoBehaviour
         _pan.PointerPos = _pointerPos;
         MyInput();
         SpeedControl();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            _pan.Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -76,8 +81,7 @@ public class VegeController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         
-        Debug.Assert(Camera.main != null, "Camera.main != null");
-        mousePos.z = Camera.main.nearClipPlane;
+        mousePos.z = Camera.main!.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }
