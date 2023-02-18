@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class VegeController : MonoBehaviour
 {
-    [Header("Rigidbody")]
-    [SerializeField] private Rigidbody2D rb;
+    // [Header("Rigidbody")]
+    private Rigidbody2D _rb;
 
     [Header("Movement")] [SerializeField] 
     private float moveSpeed;
@@ -18,7 +18,7 @@ public class VegeController : MonoBehaviour
     
     private void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        _rb = this.GetComponent<Rigidbody2D>();
         // rb.useGravity = false;
     }
 
@@ -44,20 +44,20 @@ public class VegeController : MonoBehaviour
         var transform1 = this.transform;
         _moveDirection = transform1.up * _verticalInput + transform1.right * _horizontalInput;
         
-        rb.AddForce(_moveDirection.normalized * (moveSpeed * 100), ForceMode2D.Force );
+        _rb.AddForce(_moveDirection.normalized * (moveSpeed * 100), ForceMode2D.Force );
     }
 
     private void SpeedControl()
     {
-        var velocity = rb.velocity;
+        var velocity = _rb.velocity;
         var flatVel = new Vector2(velocity.x, velocity.y);
 
         if (_horizontalInput == 0 || _verticalInput == 0)
-            rb.velocity = new Vector2(0, 0);
+            _rb.velocity = new Vector2(0, 0);
         
         if (!(flatVel.magnitude > moveSpeed)) return;
         var limitedVel = flatVel.normalized * moveSpeed;
-        rb.velocity = new Vector2(limitedVel.x, limitedVel.y);
+        _rb.velocity = new Vector2(limitedVel.x, limitedVel.y);
   
     }
 }
