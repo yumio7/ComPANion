@@ -9,6 +9,7 @@ public class VegeController : MonoBehaviour
 {
     // [Header("Rigidbody")]
     private Rigidbody2D _rb;
+    private PanRotate _pan;
 
     [Header("Movement")] [SerializeField] 
     private float moveSpeed;
@@ -16,7 +17,13 @@ public class VegeController : MonoBehaviour
     private float _horizontalInput, _verticalInput;
     
     private Vector2 _moveDirection;
-    
+    private Vector2 _pointerPos;
+
+    private void Awake()
+    {
+        _pan = GetComponentInChildren<PanRotate>();
+    }
+
     private void Start()
     {
         _rb = this.GetComponent<Rigidbody2D>();
@@ -25,6 +32,8 @@ public class VegeController : MonoBehaviour
 
     private void Update()
     {
+        _pointerPos = GetPointerInput();
+        _pan.PointerPos = _pointerPos;
         MyInput();
         SpeedControl();
     }
