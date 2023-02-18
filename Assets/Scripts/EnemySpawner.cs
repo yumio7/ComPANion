@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
         if (_enemyCount != 0) {
             _currentSpawner = spawnersArea1[Random.Range(0, spawnersArea1.Length)];
             Debug.Log("Spawning new Enemy at " + _currentSpawner.name);
-            Instantiate(enemy, _currentSpawner.transform.position, _currentSpawner.transform.rotation);
+            Instantiate(enemy, _currentSpawner.transform.position, _currentSpawner.transform.rotation, _currentSpawner.transform);
             _enemyCount--;
             yield return new WaitForSeconds(timeBetweenSpawns);
             SpawnNewEnemy();
