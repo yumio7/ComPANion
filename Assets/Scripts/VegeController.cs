@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 public class VegeController : MonoBehaviour
 {
@@ -59,5 +60,15 @@ public class VegeController : MonoBehaviour
         var limitedVel = flatVel.normalized * moveSpeed;
         rb.velocity = new Vector2(limitedVel.x, limitedVel.y);
   
+    }
+
+    // returns the mouse pointer's position on screen
+    private Vector2 GetPointerInput()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        
+        Debug.Assert(Camera.main != null, "Camera.main != null");
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }
