@@ -70,6 +70,10 @@ public class Enemy : MonoBehaviour
             var currentDistance = Vector2.Distance(transform.position, _destination);
             if(currentDistance >= distance)
                 this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
+            else
+            {
+                ThrowProjectile();
+            }
         }
         else
         {
@@ -77,8 +81,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+
     public void TakeDamage(int amt)
     {
         _healthPoints -= amt;
+    }
+
+    private void ThrowProjectile()
+    {
+        
+
     }
 }
