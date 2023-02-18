@@ -6,12 +6,14 @@ using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] SpawnNode _spawnNode;
-    [SerializeField] Vector3 initialDestination;
+    private SpawnNode _spawnNode;
+    private Vector3 _initialDestination;
     [SerializeField] private float speed;
-    private Transform target;
+    [SerializeField] private float distance;
+    private Transform _target;
     private Vector3 _destination;
-    private bool hasChanged;
+    private bool _hasChanged;
+    private bool _isChef;
 
     
     private enum EnemyType
@@ -25,17 +27,24 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _spawnNode = this.GetComponentInParent<SpawnNode>();
-        initialDestination = _spawnNode.startPosition.position;
-        _destination = initialDestination;
-        hasChanged = false;
+        _initialDestination = _spawnNode.startPosition.position;
+        _destination = _initialDestination;
+        _hasChanged = false;
 
-        if (enemy == EnemyType.Rat)
+        switch (enemy)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        else if (enemy == EnemyType.Vegetable || enemy == EnemyType.Chef)
-        {
-            target = GameObject.FindGameObjectWithTag("Chef").transform;
+            case EnemyType.Rat:
+                _target = GameObject.FindGameObjectWithTag("Player").transform;
+                _isChef = false;
+                break;
+            case EnemyType.Vegetable:
+                _target = GameObject.FindGameObjectWithTag("Chef").transform;
+                _isChef = false;
+                break;
+            case EnemyType.Chef:
+                _target = GameObject.FindGameObjectWithTag("Chef").transform;
+                _isChef = true;
+                break;
         }
     }
 
@@ -43,13 +52,23 @@ public class Enemy : MonoBehaviour
     {
         var step = speed * Time.deltaTime;
 
-        if (this.transform.position == initialDestination)
-            hasChanged = true;
+        if (this.transform.position == _initialDestination)
+            _hasChanged = true;
 
-        if (hasChanged)
+        if (_hasChanged)
         {
-            _destination = target.position;
+            _destination = _target.position;
         }
-        this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
+
+        if (_isChef && _destination == _target.position)
+        {
+            var currentDistance = Vector2.Distance(transform.position, _destination);
+            if(currentDistance >= distance)
+                this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
+        }
+        else
+        {
+            this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
+        }
     }
 }

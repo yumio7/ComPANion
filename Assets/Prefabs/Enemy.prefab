@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f398c56ce9994e8673c89da5dc9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnNode: {fileID: 0}
-  initialDestination: {x: 0, y: 0, z: 0}
   speed: 1
-  enemy: 1
+  distance: 5
+  enemy: 2
