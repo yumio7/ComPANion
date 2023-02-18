@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class SpawnNode : MonoBehaviour
 {
-    
+    [Header("Move To Node")] 
+    public Transform startPosition;
 }
