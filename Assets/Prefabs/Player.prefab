@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3690325341184218042}
   - component: {fileID: 167750896873999164}
-  - component: {fileID: 5514522857931700987}
+  - component: {fileID: 1925365247521583529}
   m_Layer: 0
   m_Name: ParryHitBox
   m_TagString: Untagged
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5514522857931700987
+--- !u!114 &1925365247521583529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 306121135493834222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52b9639447090c545899ba03788f0395, type: 3}
+  m_Script: {fileID: 11500000, guid: 782dd08ea2050924bb5aa58f62c82cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &657202635436756464
