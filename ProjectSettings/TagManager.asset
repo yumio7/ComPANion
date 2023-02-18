@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Chef
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
