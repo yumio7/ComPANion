@@ -81,8 +81,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     public void TakeDamage(int amt)
     {
         _healthPoints -= amt;
@@ -91,6 +89,5 @@ public class Enemy : MonoBehaviour
     private void ThrowProjectile()
     {
         
-
     }
 }
