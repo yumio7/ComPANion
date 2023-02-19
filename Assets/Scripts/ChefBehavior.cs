@@ -32,6 +32,7 @@ public class ChefBehavior : MonoBehaviour
     private static readonly Vector2 _colPoint5 = new Vector2(-4.5f, 0.0f);
     
     private static readonly int _rummage = Animator.StringToHash("Rummage");
+    private static readonly int _endRummage = Animator.StringToHash("EndRummage");
 
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class ChefBehavior : MonoBehaviour
         if (!letHimCook && _collectTimer >= 10f)
         {
             _collecting = true;
+            _ani.ResetTrigger(_endRummage);
             _ani.SetTrigger(_rummage);
             Teleport();
         }
@@ -61,6 +63,7 @@ public class ChefBehavior : MonoBehaviour
         if (!(_collectTimer <= 0)) return;
         _collecting = false;
         _ani.ResetTrigger(_rummage);
+        _ani.SetTrigger(_endRummage);
         _collectTimer = 10f;
         Return();
         letHimCook = true;
