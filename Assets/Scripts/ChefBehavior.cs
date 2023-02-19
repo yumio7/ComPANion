@@ -23,12 +23,12 @@ public class ChefBehavior : MonoBehaviour
     private bool _collecting;
     private Random _rnd;
 
-    private static readonly Vector2 _colPoint0 = new Vector2(-4.0f, 3.0f);
-    private static readonly Vector2 _colPoint1 = new Vector2(4.0f, 3.0f);
-    private static readonly Vector2 _colPoint2 = new Vector2(7.0f, 0.0f);
-    private static readonly Vector2 _colPoint3 = new Vector2(4.0f, -3.0f);
-    private static readonly Vector2 _colPoint4 = new Vector2(-4.0f, -3.0f);
-    private static readonly Vector2 _colPoint5 = new Vector2(-7.0f, 0.0f);
+    private static readonly Vector2 _colPoint0 = new Vector2(-2.7f, 2.0f);
+    private static readonly Vector2 _colPoint1 = new Vector2(2.7f, 2.0f);
+    private static readonly Vector2 _colPoint2 = new Vector2(4.5f, 0.0f);
+    private static readonly Vector2 _colPoint3 = new Vector2(2.7f, -2.0f);
+    private static readonly Vector2 _colPoint4 = new Vector2(-2.7f, -2.0f);
+    private static readonly Vector2 _colPoint5 = new Vector2(-4.5f, 0.0f);
 
     private void Awake()
     {
