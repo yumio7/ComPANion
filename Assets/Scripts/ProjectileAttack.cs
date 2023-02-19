@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ProjectileAttack : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class ProjectileAttack : MonoBehaviour
 
     private LevelManager _lm;
 
-    [HideInInspector] public bool _isParried;
+    [HideInInspector] public bool isParried;
     
     private void Awake()
     {
@@ -27,13 +28,13 @@ public class ProjectileAttack : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(_angle - 90, Vector3.forward);
 
         _lm = GameObject.FindObjectOfType<LevelManager>();
-        _isParried = false;
+        isParried = false;
         // Destroy(this.gameObject, 1);
     }
 
     private void Update()
     {
-        if (!_isParried)
+        if (!isParried)
         {
             transform.position
                 = Vector2.MoveTowards(transform.position, _shootPoint, shootSpeed / 10);
@@ -51,8 +52,8 @@ public class ProjectileAttack : MonoBehaviour
 
     public void Parry()
     {
-        if (_isParried) return;
-        _isParried = true;
+        if (isParried) return;
+        isParried = true;
         var t = transform;
         Vector3 angle = t.eulerAngles + (Vector3.forward * 180f);
         t.eulerAngles = angle;

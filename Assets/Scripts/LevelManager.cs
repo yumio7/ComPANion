@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,33 +7,51 @@ using UnityEngine.Serialization;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int hitPoints = 5;
-    [SerializeField] private float levelTime = 60.0f;
-
-    public bool isGameOver;
+    [SerializeField] private float levelTime = 90.0f;
     
+    private float _cookPercent;
     private float _countdown;
+    private bool _isGameOver;
+
+    private ChefBehavior _cb;
 
     // Start is called before the first frame update
     void Start()
     {
-        isGameOver = false;
+        _isGameOver = false;
+        _cookPercent = 0f;
+        _cb = GameObject.FindGameObjectWithTag("Chef").GetComponent<ChefBehavior>();
     }
 
+    // TODO: convert countdown timer into chef movements
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver) return;
+        if (_isGameOver) return;
+
+        print("Total: " + _countdown);
+        print("Cook: " + _cookPercent);
         
         if (hitPoints <= 0)
         {
-            isGameOver = true;
+            _isGameOver = true;
             GameOver();
         }
 
         if (_countdown <= 0)
         {
-            isGameOver = true;
+            _isGameOver = true;
             GameWon();
+        }
+
+        if (_cb.letHimCook)
+        {
+            _cookPercent += Time.deltaTime;
+
+            if (Math.Abs(_cookPercent - 33) > 0.1f || Math.Abs(_cookPercent - 66) > 0.1f)
+            {
+                _cb.letHimCook = false;
+            }
         }
 
         _countdown -= Time.deltaTime;
@@ -47,8 +66,6 @@ public class LevelManager : MonoBehaviour
     {
         // TODO: add game won scene
     }
-    
-    // TODO: convert countdown timer into chef movements
 
     public void TakeDamage()
     {

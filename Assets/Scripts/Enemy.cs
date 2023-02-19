@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
     {
         if (!col.gameObject.CompareTag("Projectile")) return;
         ProjectileAttack proj = col.GetComponent<ProjectileAttack>();
-        if(!proj._isParried) return;
+        if(!proj.isParried) return;
         print("Oop " + _healthPoints);
         TakeDamage(2);
     }

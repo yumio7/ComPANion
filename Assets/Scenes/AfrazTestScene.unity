@@ -650,11 +650,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2964886201243757844, guid: 53e65953a89cacb47826c534eaf34575, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0838661
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2964886201243757844, guid: 53e65953a89cacb47826c534eaf34575, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1668326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2964886201243757844, guid: 53e65953a89cacb47826c534eaf34575, type: 3}
       propertyPath: m_LocalPosition.z
@@ -994,7 +994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 5
   levelTime: 60
-  isGameOver: 0
 --- !u!4 &2070712797
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9082279516884694106, guid: d8101da82890e1e48a468b8d5bd08032, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9082279516884694106, guid: d8101da82890e1e48a468b8d5bd08032, type: 3}
       propertyPath: m_LocalPosition.z

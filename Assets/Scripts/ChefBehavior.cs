@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Transactions;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = Unity.Mathematics.Random;
 
 /// <summary>
 /// <para> chef is either 1.) cookin that shit up 2.) collecting ingredients or 3.)
@@ -12,22 +15,75 @@ using UnityEngine;
 /// </summary>
 public class ChefBehavior : MonoBehaviour
 {
-    private LevelManager _levelManager;
+    // true when the chef is cookin da soup
+    [HideInInspector] public bool letHimCook;
+    
+    private LevelManager _lm;
+    private float _collectTimer;
+    private bool _collecting;
+
+    private static Vector2 _colPoint0 = new Vector2(-4.0f, 3.0f);
+    private static Vector2 _colPoint1 = new Vector2(4.0f, 3.0f);
+    private static Vector2 _colPoint2 = new Vector2(7.0f, 0.0f);
+    private static Vector2 _colPoint3 = new Vector2(4.0f, -3.0f);
+    private static Vector2 _colPoint4 = new Vector2(-4.0f, -3.0f);
+    private static Vector2 _colPoint5 = new Vector2(-7.0f, 0.0f);
 
     private void Awake()
     {
-        _levelManager = FindObjectOfType<LevelManager>();
+        _lm = FindObjectOfType<LevelManager>();
+        letHimCook = true;
+        _collectTimer = 10f;
+        _collecting = false;
+    }
+
+    private void Update()
+    {
+        if (!letHimCook && Math.Abs(_collectTimer - 10f) < 0.01f)
+        {
+            _collecting = true;
+            Teleport();
+        }
+
+        if (!_collecting) return;
+        _collectTimer -= Time.deltaTime;
+        
+        if (!(_collectTimer <= 0)) return;
+        _collecting = false;
+        Return();
+        letHimCook = true;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {   
         if (!col.gameObject.CompareTag("Enemy")) return;
-        Enemy enemy = col.GetComponent<Enemy>();
+        var enemy = col.GetComponent<Enemy>();
 
-        if (enemy.enemy == Enemy.EnemyType.Vegetable)
+        if (enemy.enemy != Enemy.EnemyType.Vegetable) return;
+        _lm.TakeDamage();
+        Destroy(col.gameObject);
+    }
+
+    private void Teleport()
+    {
+        var loc = new Random();
+        int next = loc.NextInt(0, 5);
+
+        var t = transform;
+        t.position = next switch
         {
-            _levelManager.TakeDamage();
-            Destroy(col.gameObject);
-        }
+            0 => _colPoint0,
+            1 => _colPoint1,
+            2 => _colPoint2,
+            3 => _colPoint3,
+            4 => _colPoint4,
+            5 => _colPoint5,
+            _ => t.position
+        };
+    }
+
+    private void Return()
+    {
+        transform.position = Vector2.zero;
     }
 }
