@@ -33,7 +33,7 @@ public class ProjectileAttack : MonoBehaviour
 
     private void Update()
     {
-        if (PerfectParry.Waiting) return;
+        //if (PerfectParry.Waiting) return;
         
         transform.position = !isParried 
             ? Vector2.MoveTowards(transform.position, _shootPoint, shootSpeed / 10) 
