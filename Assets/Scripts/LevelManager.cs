@@ -33,8 +33,6 @@ public class LevelManager : MonoBehaviour
     {
         if (_isGameOver) return;
         
-        print("Cook%: " + _cookPercent);
-        
         if (hitPoints <= 0)
         {
             _isGameOver = true;
@@ -59,6 +57,10 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver()
     {
+        for (int i = 0; i < 100; i++)
+        {
+            print("you fucking LOSELSOELOSELSOESLELO");
+        }
         // TODO: add game over scene
     }
 
@@ -74,5 +76,10 @@ public class LevelManager : MonoBehaviour
     public void TakeDamage()
     {
         hitPoints--;
+    }
+
+    public void HealDamage()
+    {
+        hitPoints++;
     }
 }

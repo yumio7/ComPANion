@@ -9,7 +9,7 @@ public class VegeParry : MonoBehaviour
   {
     if (!other.CompareTag("Projectile")) return;
     other.GetComponent<ProjectileAttack>().Parry();
-    
-    // TODO: que audio clip and poop
+
+    // TODO: que audio clip
   }
 }

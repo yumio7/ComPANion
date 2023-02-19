@@ -27,23 +27,17 @@ public class ProjectileAttack : MonoBehaviour
         _angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(_angle - 90, Vector3.forward);
 
-        _lm = GameObject.FindObjectOfType<LevelManager>();
+        _lm = FindObjectOfType<LevelManager>();
         isParried = false;
-        // Destroy(this.gameObject, 1);
     }
 
     private void Update()
     {
-        if (!isParried)
-        {
-            transform.position
-                = Vector2.MoveTowards(transform.position, _shootPoint, shootSpeed / 10);
-        }
-        else
-        {
-            transform.position
-                = Vector2.MoveTowards(transform.position, _shootPoint, -shootSpeed / 10);
-        }
+        if (PerfectParry.Waiting) return;
+        
+        transform.position = !isParried 
+            ? Vector2.MoveTowards(transform.position, _shootPoint, shootSpeed / 10) 
+            : Vector2.MoveTowards(transform.position, _shootPoint, -shootSpeed / 10);
 
         if (this.transform.position == _target.transform.position)
             _lm.TakeDamage();
