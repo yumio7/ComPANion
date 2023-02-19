@@ -89,6 +89,6 @@ public class ChefBehavior : MonoBehaviour
 
     private void Return()
     {
-        transform.position = Vector2.zero;
+        transform.position = new Vector2(-1, 0);
     }
 }
