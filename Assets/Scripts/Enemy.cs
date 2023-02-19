@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Sprite badVegetableSprite;
     [SerializeField] private Sprite ratSprite;
     [SerializeField] private Sprite badChefSprite;
+
+    private BoxCollider2D _collider2D;
     
     private Transform _target;
     private Vector3 _destination;
@@ -50,6 +52,8 @@ public class Enemy : MonoBehaviour
         _destination = _initialDestination;
         _hasChanged = false;
 
+        _collider2D = gameObject.GetComponent<BoxCollider2D>();
+        
         _randomSelector = Random.Range(0, 10);
 
         if (_randomSelector < 2)
@@ -66,12 +70,14 @@ public class Enemy : MonoBehaviour
                 _isChef = false;
                 _healthPoints = 1;
                 gameObject.GetComponent<SpriteRenderer>().sprite = ratSprite;
+                _collider2D.size = new Vector2(0.6475344f, 0.6807499f);
                 break;
             case EnemyType.Vegetable:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = false;
                 _healthPoints = 1;
                 gameObject.GetComponent<SpriteRenderer>().sprite = badVegetableSprite;
+                _collider2D.size = new Vector2(0.6095753f, 1.16f);
                 break;
             case EnemyType.Chef:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
@@ -79,6 +85,8 @@ public class Enemy : MonoBehaviour
                 _healthPoints = 2;
                 _canThrow = true;
                 gameObject.GetComponent<SpriteRenderer>().sprite = badChefSprite;
+                _collider2D.offset = new Vector2(0.1853431f, -0.09696102f);
+                _collider2D.size = new Vector2(0.5031262f, 1.477449f);
                 break;
         }
     }
