@@ -11,6 +11,11 @@ public class ProjectileAttack : MonoBehaviour
     private GameObject _target;
     private float _angle;
     private Vector3 _shootPoint;
+
+    private LevelManager _lm;
+
+    private bool _isParried;
+    
     private void Awake()
     {
         var transform1 = this.transform;
@@ -20,16 +25,39 @@ public class ProjectileAttack : MonoBehaviour
         _direction = position - transform1.position;
         _angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(_angle - 90, Vector3.forward);
+
+        _lm = GameObject.FindObjectOfType<LevelManager>();
+        _isParried = false;
         // Destroy(this.gameObject, 1);
     }
 
     private void Update()
     {
-        this.transform.position = Vector2.MoveTowards(this.transform.position, _shootPoint, shootSpeed / 10);
-        
-        if(this.transform.position == _shootPoint)
+        if (!_isParried)
         {
-            Destroy(gameObject);
+            transform.position
+                = Vector2.MoveTowards(transform.position, _shootPoint, shootSpeed / 10);
         }
+        else
+        {
+            transform.position
+                = Vector2.MoveTowards(transform.position, _shootPoint, -shootSpeed / 10);
+        }
+
+        if (this.transform.position != _shootPoint) return;
+        _lm.TakeDamage();
+        Destroy(gameObject);
+    }
+
+    public void Parry()
+    {
+        if (_isParried) return;
+        _isParried = true;
+        var t = transform;
+        Vector3 angle = t.eulerAngles + (Vector3.forward * 180f);
+        t.eulerAngles = angle;
+
+        Destroy(gameObject, 1);
+        // TODO: possibly tint sprite different color
     }
 }

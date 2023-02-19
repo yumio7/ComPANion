@@ -29,6 +29,8 @@ public class VegeController : MonoBehaviour
         _rb = this.GetComponent<Rigidbody2D>();
         // rb.useGravity = false;
     }
+    
+    // TODO: make sprite flip when mouse is on left side of screen
 
     private void Update()
     {

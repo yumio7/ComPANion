@@ -21,6 +21,8 @@ public class EnemySpawner : MonoBehaviour
 
     private static EnemySpawner _instance;
 
+    // TODO: make it so enemies cant spawn at location closest to chef    
+    
     private void Awake()
     {
         if (_instance == null)

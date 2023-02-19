@@ -40,13 +40,15 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver()
     {
-        
+        // TODO: add game over scene
     }
 
     private void GameWon()
     {
-        
+        // TODO: add game won scene
     }
+    
+    // TODO: convert countdown timer into chef movements
 
     public void TakeDamage()
     {

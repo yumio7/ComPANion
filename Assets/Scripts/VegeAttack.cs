@@ -8,9 +8,7 @@ public class VegeAttack : MonoBehaviour
 {
   private void OnTriggerEnter(Collider other)
   {
-    if (other.CompareTag("Enemy"))
-    {
-      other.GetComponent<Enemy>().TakeDamage(1);
-    }
+    if (!other.CompareTag("Enemy")) return;
+    other.GetComponent<Enemy>().TakeDamage(1);
   }
 }
