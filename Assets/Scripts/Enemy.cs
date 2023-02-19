@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Projectile")] 
     [SerializeField] private GameObject projectile;
+    [SerializeField] private float throwDistance;
 
     [Header("Enemy Sprites")] 
     [SerializeField] private Sprite badVegetableSprite;
@@ -129,7 +130,9 @@ public class Enemy : MonoBehaviour
     private void ThrowProjectile()
     {
         var transform1 = transform;
-        Instantiate(projectile, transform1.position, transform1.rotation);
+        var position = transform1.position;
+        Vector3 throwDirection = _destination - position;
+        Instantiate(projectile, position + (throwDirection.normalized * throwDistance), transform1.rotation);
     }
 
     private void ResetThrow()
