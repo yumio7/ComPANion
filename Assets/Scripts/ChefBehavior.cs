@@ -13,6 +13,12 @@ using UnityEngine;
 public class ChefBehavior : MonoBehaviour
 {
     private LevelManager _levelManager;
+
+    private void Awake()
+    {
+        _levelManager = FindObjectOfType<LevelManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {   
         if (!col.gameObject.CompareTag("Enemy")) return;
@@ -21,6 +27,7 @@ public class ChefBehavior : MonoBehaviour
         if (enemy.enemy == Enemy.EnemyType.Vegetable)
         {
             _levelManager.TakeDamage();
+            Destroy(col.gameObject);
         }
     }
 }
