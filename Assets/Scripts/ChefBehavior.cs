@@ -22,6 +22,7 @@ public class ChefBehavior : MonoBehaviour
     private float _collectTimer;
     private bool _collecting;
     private Random _rnd;
+    private Animator _ani;
 
     private static readonly Vector2 _colPoint0 = new Vector2(-2.7f, 2.0f);
     private static readonly Vector2 _colPoint1 = new Vector2(2.7f, 2.0f);
@@ -29,6 +30,8 @@ public class ChefBehavior : MonoBehaviour
     private static readonly Vector2 _colPoint3 = new Vector2(2.7f, -2.0f);
     private static readonly Vector2 _colPoint4 = new Vector2(-2.7f, -2.0f);
     private static readonly Vector2 _colPoint5 = new Vector2(-4.5f, 0.0f);
+    
+    private static readonly int _rummage = Animator.StringToHash("Rummage");
 
     private void Awake()
     {
@@ -40,6 +43,7 @@ public class ChefBehavior : MonoBehaviour
         _collectTimer = 10f;
         _collecting = false;
         _rnd = new Random((uint) DateTime.Now.Millisecond);
+        _ani = GetComponent<Animator>();
     }
 
     private void LateUpdate()
@@ -47,6 +51,7 @@ public class ChefBehavior : MonoBehaviour
         if (!letHimCook && _collectTimer >= 10f)
         {
             _collecting = true;
+            _ani.SetTrigger(_rummage);
             Teleport();
         }
 
@@ -55,6 +60,7 @@ public class ChefBehavior : MonoBehaviour
         
         if (!(_collectTimer <= 0)) return;
         _collecting = false;
+        _ani.ResetTrigger(_rummage);
         _collectTimer = 10f;
         Return();
         letHimCook = true;
