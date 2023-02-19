@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     private bool _hasChanged;
     private bool _isChef;
 
+    private bool _canThrow;
+
     private int _healthPoints;
 
     
@@ -56,6 +58,7 @@ public class Enemy : MonoBehaviour
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = true;
                 _healthPoints = 2;
+                _canThrow = true;
                 break;
         }
     }
@@ -79,7 +82,12 @@ public class Enemy : MonoBehaviour
                 this.transform.position = Vector2.MoveTowards(transform.position, _destination, step);
             else
             {
-                ThrowProjectile();
+                if (_canThrow)
+                {
+                    ThrowProjectile();
+                    _canThrow = false;
+                    Invoke(nameof(ResetThrow), 4);
+                }
             }
         }
         else
@@ -97,5 +105,11 @@ public class Enemy : MonoBehaviour
     {
         var transform1 = transform;
         Instantiate(projectile, transform1.position, transform1.rotation);
+    }
+
+    private void ResetThrow()
+    {
+        Debug.Log("Throwing");
+        _canThrow = true;
     }
 }
