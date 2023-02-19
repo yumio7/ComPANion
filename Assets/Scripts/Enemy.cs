@@ -112,4 +112,10 @@ public class Enemy : MonoBehaviour
         Debug.Log("Throwing");
         _canThrow = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!col.CompareTag("Projectile")) return;
+        TakeDamage(2);
+    }
 }
