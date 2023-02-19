@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Projectile")] 
     [SerializeField] private GameObject projectile;
+
+    [Header("Enemy Sprites")] 
+    [SerializeField] private Sprite badVegetableSprite;
+    [SerializeField] private Sprite ratSprite;
+    [SerializeField] private Sprite badChefSprite;
     
     private Transform _target;
     private Vector3 _destination;
@@ -59,17 +64,20 @@ public class Enemy : MonoBehaviour
                 _target = GameObject.FindGameObjectWithTag("Player").transform;
                 _isChef = false;
                 _healthPoints = 1;
+                gameObject.GetComponent<SpriteRenderer>().sprite = ratSprite;
                 break;
             case EnemyType.Vegetable:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = false;
                 _healthPoints = 1;
+                gameObject.GetComponent<SpriteRenderer>().sprite = badVegetableSprite;
                 break;
             case EnemyType.Chef:
                 _target = GameObject.FindGameObjectWithTag("Chef").transform;
                 _isChef = true;
                 _healthPoints = 2;
                 _canThrow = true;
+                gameObject.GetComponent<SpriteRenderer>().sprite = badChefSprite;
                 break;
         }
     }
