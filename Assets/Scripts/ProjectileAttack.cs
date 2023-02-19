@@ -14,7 +14,7 @@ public class ProjectileAttack : MonoBehaviour
 
     private LevelManager _lm;
 
-    private bool _isParried;
+    [HideInInspector] public bool _isParried;
     
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class ProjectileAttack : MonoBehaviour
         Vector3 angle = t.eulerAngles + (Vector3.forward * 180f);
         t.eulerAngles = angle;
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 10);
         // TODO: possibly tint sprite different color
     }
 }

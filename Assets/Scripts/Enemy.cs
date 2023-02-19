@@ -121,7 +121,10 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.CompareTag("Projectile")) return;
+        if (!col.gameObject.CompareTag("Projectile")) return;
+        ProjectileAttack proj = col.GetComponent<ProjectileAttack>();
+        if(!proj._isParried) return;
+        print("Oop " + _healthPoints);
         TakeDamage(2);
     }
 }
