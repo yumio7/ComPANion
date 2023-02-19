@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AfrazTestScene.unity
     guid: 0ab3b6848ebfde148be038269de7eb98
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 1f08b05dfd08e5345bd2d9baec0cce1d
+  - enabled: 1
+    path: Assets/Scenes/LossScene.unity
+    guid: b1ad19b6733c9aa44808783eb9cc6dc7
   m_configObjects: {}
