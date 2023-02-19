@@ -21,25 +21,30 @@ public class ChefBehavior : MonoBehaviour
     private LevelManager _lm;
     private float _collectTimer;
     private bool _collecting;
+    private Random _rnd;
 
-    private static Vector2 _colPoint0 = new Vector2(-4.0f, 3.0f);
-    private static Vector2 _colPoint1 = new Vector2(4.0f, 3.0f);
-    private static Vector2 _colPoint2 = new Vector2(7.0f, 0.0f);
-    private static Vector2 _colPoint3 = new Vector2(4.0f, -3.0f);
-    private static Vector2 _colPoint4 = new Vector2(-4.0f, -3.0f);
-    private static Vector2 _colPoint5 = new Vector2(-7.0f, 0.0f);
+    private static readonly Vector2 _colPoint0 = new Vector2(-4.0f, 3.0f);
+    private static readonly Vector2 _colPoint1 = new Vector2(4.0f, 3.0f);
+    private static readonly Vector2 _colPoint2 = new Vector2(7.0f, 0.0f);
+    private static readonly Vector2 _colPoint3 = new Vector2(4.0f, -3.0f);
+    private static readonly Vector2 _colPoint4 = new Vector2(-4.0f, -3.0f);
+    private static readonly Vector2 _colPoint5 = new Vector2(-7.0f, 0.0f);
 
     private void Awake()
     {
         _lm = FindObjectOfType<LevelManager>();
+        
+        print("cooking??: " + letHimCook);
         letHimCook = true;
+        
         _collectTimer = 10f;
         _collecting = false;
+        _rnd = new Random((uint) DateTime.Now.Millisecond);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (!letHimCook && Math.Abs(_collectTimer - 10f) < 0.01f)
+        if (!letHimCook && _collectTimer >= 10f)
         {
             _collecting = true;
             Teleport();
@@ -50,6 +55,7 @@ public class ChefBehavior : MonoBehaviour
         
         if (!(_collectTimer <= 0)) return;
         _collecting = false;
+        _collectTimer = 10f;
         Return();
         letHimCook = true;
     }
@@ -66,8 +72,7 @@ public class ChefBehavior : MonoBehaviour
 
     private void Teleport()
     {
-        var loc = new Random();
-        int next = loc.NextInt(0, 5);
+        int next = _rnd.NextInt(0, 5);
 
         var t = transform;
         t.position = next switch

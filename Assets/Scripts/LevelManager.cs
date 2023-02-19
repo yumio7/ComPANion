@@ -7,10 +7,12 @@ using UnityEngine.Serialization;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int hitPoints = 5;
-    [SerializeField] private float levelTime = 90.0f;
+    
+    [SerializeField] private float totalCookTime = 60.0f;
     
     private float _cookPercent;
-    private float _countdown;
+    private float _cookTime;
+    private float _actualCookTime;
     private bool _isGameOver;
 
     private ChefBehavior _cb;
@@ -21,6 +23,8 @@ public class LevelManager : MonoBehaviour
         _isGameOver = false;
         _cookPercent = 0f;
         _cb = GameObject.FindGameObjectWithTag("Chef").GetComponent<ChefBehavior>();
+        _cookTime = 0f;
+        _actualCookTime = 0f;
     }
 
     // TODO: convert countdown timer into chef movements
@@ -28,9 +32,8 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if (_isGameOver) return;
-
-        print("Total: " + _countdown);
-        print("Cook: " + _cookPercent);
+        
+        print("Cook%: " + _cookPercent);
         
         if (hitPoints <= 0)
         {
@@ -38,23 +41,20 @@ public class LevelManager : MonoBehaviour
             GameOver();
         }
 
-        if (_countdown <= 0)
+        if (_cookPercent >= 100)
         {
             _isGameOver = true;
             GameWon();
         }
 
-        if (_cb.letHimCook)
-        {
-            _cookPercent += Time.deltaTime;
+        if (!_cb.letHimCook) return;
+        _actualCookTime += Time.deltaTime;
+        _cookPercent = (_actualCookTime / totalCookTime) * 100;
+        _cookTime += Time.deltaTime;
 
-            if (Math.Abs(_cookPercent - 33) > 0.1f || Math.Abs(_cookPercent - 66) > 0.1f)
-            {
-                _cb.letHimCook = false;
-            }
-        }
-
-        _countdown -= Time.deltaTime;
+        if (!(_cookTime >= 20.0f)) return;
+        _cb.letHimCook = false;
+        _cookTime = 0.0f;
     }
 
     private void GameOver()
@@ -64,6 +64,10 @@ public class LevelManager : MonoBehaviour
 
     private void GameWon()
     {
+        for (int i = 0; i < 100; i++)
+        {
+            print("you fucking win ayayyyayayayyaayyaya");
+        }
         // TODO: add game won scene
     }
 
