@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f398c56ce9994e8673c89da5dc9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.75
   distance: 5
   projectile: {fileID: 4660931868596380981, guid: 20e42e8ce8c396545b5d68a71e28f127, type: 3}
   throwDistance: 0.5
