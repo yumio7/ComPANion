@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1222763821
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,9 +101,9 @@ MonoBehaviour:
   speed: 1
   distance: 5
   projectile: {fileID: 4660931868596380981, guid: 20e42e8ce8c396545b5d68a71e28f127, type: 3}
-  throwDistance: 2
+  throwDistance: 0.5
   badVegetableSprite: {fileID: 21300000, guid: 2178294dc950cf946a1490d832dd7f91, type: 3}
-  ratSprite: {fileID: 21300000, guid: 407e032d5b8c9954091188dbfeff078e, type: 3}
+  ratSprite: {fileID: 21300000, guid: b2540590953a1cd4984a875dc8be6385, type: 3}
   badChefSprite: {fileID: 21300000, guid: 03a37862cdeef0946b23fa0987fa6761, type: 3}
   enemy: 0
 --- !u!61 &-1707494937918263100
