@@ -993,7 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 5
-  levelTime: 60
+  totalCookTime: 60
 --- !u!4 &2070712797
 Transform:
   m_ObjectHideFlags: 0
