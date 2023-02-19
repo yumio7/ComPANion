@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8060983125535394880}
   - component: {fileID: -6035519249537355392}
   - component: {fileID: 7832839387230014788}
+  - component: {fileID: -1707494937918263100}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -100,7 +101,7 @@ MonoBehaviour:
   speed: 1
   distance: 5
   projectile: {fileID: 4660931868596380981, guid: 20e42e8ce8c396545b5d68a71e28f127, type: 3}
-  enemy: 1
+  enemy: 2
 --- !u!61 &-1707494937918263100
 BoxCollider2D:
   m_ObjectHideFlags: 0
