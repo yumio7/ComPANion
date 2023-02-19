@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
         _cookPercent = (_actualCookTime / totalCookTime) * 100;
         cookBar.fillAmount = _cookPercent / 100;
         _cookTime += Time.deltaTime;
+        HealDamage();
 
         if (!(_cookTime >= 20.0f)) return;
         _cb.letHimCook = false;

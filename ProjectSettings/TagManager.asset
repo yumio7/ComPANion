@@ -44,3 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 1222763821
+    locked: 0
+  - name: Chef
+    uniqueID: 3288167029
+    locked: 0
+  - name: Player
+    uniqueID: 1083317603
+    locked: 0
+  - name: Projectiles
+    uniqueID: 4104268965
+    locked: 0
