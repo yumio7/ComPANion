@@ -8,17 +8,12 @@ public class ProjectileAttack : MonoBehaviour
     private Vector2 _direction;
     private GameObject _target;
     private float _angle;
-    private Vector3 _additionEulerAngles;
-    private Quaternion _currentRotation;
     private void Awake()
     {
-        _currentRotation = this.transform.rotation;
         var transform1 = this.transform;
         _target = GameObject.FindGameObjectWithTag("Chef");
         _direction = _target.transform.position - transform1.position;
-        _angle = Vector2.Angle(transform1.up, _direction);
-        _additionEulerAngles = new Vector3(0, 0, _angle);
-        _currentRotation.eulerAngles += _additionEulerAngles;
-        this.transform.rotation = _currentRotation;
+        _angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(_angle - 90, Vector3.forward);
     }
 }
