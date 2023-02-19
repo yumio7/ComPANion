@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5587255019767975404}
   - component: {fileID: 9041622486271631085}
+  - component: {fileID: 6494174668944226701}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -177,6 +178,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6494174668944226701
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657202635436756464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d916b217f493b7458541b81e1c1ff81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &825905145277163623
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 8843007874968354461}
+  onionAni: {fileID: 6494174668944226701}
   delay: 0.3
 --- !u!1 &7703934052489613679
 GameObject:

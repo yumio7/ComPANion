@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d98c69b4472a16143beb359364433000, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8aa6f8eaee845bd4b97283c6e1c9d0c3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -48,7 +48,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b2925159a978cf341ad888a3ee425975, type: 2}
+  m_Motion: {fileID: 7400000, guid: da8612e2b91b63a4282942e02757f152, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -85,7 +85,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pan
+  m_Name: Attack
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack
