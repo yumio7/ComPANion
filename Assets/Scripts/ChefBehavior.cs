@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 /// <summary>
@@ -10,15 +12,15 @@ using UnityEngine;
 /// </summary>
 public class ChefBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private LevelManager _levelManager;
+    private void OnTriggerEnter2D(Collider2D col)
+    {   
+        if (!col.gameObject.CompareTag("Enemy")) return;
+        Enemy enemy = col.GetComponent<Enemy>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (enemy.enemy == Enemy.EnemyType.Vegetable)
+        {
+            _levelManager.TakeDamage();
+        }
     }
 }

@@ -26,15 +26,15 @@ public class Enemy : MonoBehaviour
 
     private int _healthPoints;
 
-    
-    private enum EnemyType
+
+    public enum EnemyType
     {
         Rat,
         Vegetable,
         Chef
     }
 
-    [SerializeField] EnemyType enemy;
+    [SerializeField] public EnemyType enemy;
     private void Awake()
     {
         _spawnNode = this.GetComponentInParent<SpawnNode>();

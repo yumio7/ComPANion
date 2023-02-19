@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Security.Cryptography;
 using UnityEngine;
-using Debug = System.Diagnostics.Debug;
 
 public class VegeController : MonoBehaviour
 {
@@ -19,9 +17,12 @@ public class VegeController : MonoBehaviour
     private Vector2 _moveDirection;
     private Vector2 _pointerPos;
 
+    private LevelManager _levelManager;
+
     private void Awake()
     {
         _pan = GetComponentInChildren<PanBehavior>();
+        _levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Start()
@@ -85,5 +86,16 @@ public class VegeController : MonoBehaviour
         
         mousePos.z = Camera.main!.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(!col.gameObject.CompareTag("Enemy")) return;
+        Enemy enemy = col.GetComponent<Enemy>();
+        if (enemy.enemy == Enemy.EnemyType.Rat)
+        {
+            _levelManager.TakeDamage();
+            Destroy(col.gameObject);
+        }
     }
 }
