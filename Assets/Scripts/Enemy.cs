@@ -65,6 +65,12 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (_healthPoints <= 0)
+        {
+            Destroy(gameObject);
+            // TODO: add little shrink death animation thing
+        }
+        
         var step = speed * Time.deltaTime;
 
         if (this.transform.position == _initialDestination)
