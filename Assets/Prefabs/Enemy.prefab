@@ -101,8 +101,8 @@ MonoBehaviour:
   speed: 1
   distance: 5
   projectile: {fileID: 4660931868596380981, guid: 20e42e8ce8c396545b5d68a71e28f127, type: 3}
-  badVegetableSprite: {fileID: 21300000, guid: 144aa74618b85974a9a50f612c2fa8fd, type: 3}
-  ratSprite: {fileID: 21300000, guid: daf2ab606d4db0d4f9ecf4c02137d2a8, type: 3}
+  badVegetableSprite: {fileID: 21300000, guid: 2178294dc950cf946a1490d832dd7f91, type: 3}
+  ratSprite: {fileID: 21300000, guid: 407e032d5b8c9954091188dbfeff078e, type: 3}
   badChefSprite: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
   enemy: 0
 --- !u!61 &-1707494937918263100
