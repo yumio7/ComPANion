@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
 
     private int _healthPoints;
 
+    private int _randomSelector;
 
     public enum EnemyType
     {
@@ -41,6 +43,15 @@ public class Enemy : MonoBehaviour
         _initialDestination = _spawnNode.startPosition.position;
         _destination = _initialDestination;
         _hasChanged = false;
+
+        _randomSelector = Random.Range(0, 10);
+
+        if (_randomSelector < 2)
+            enemy = EnemyType.Chef;
+        else if(_randomSelector < 6)
+            enemy = EnemyType.Rat;
+        else if (_randomSelector < 10)
+            enemy = EnemyType.Vegetable;
 
         switch (enemy)
         {
@@ -126,5 +137,7 @@ public class Enemy : MonoBehaviour
         if(!proj.isParried) return;
         print("Oop " + _healthPoints);
         TakeDamage(2);
+        if(enemy == EnemyType.Chef)
+            Destroy(col.gameObject);
     }
 }

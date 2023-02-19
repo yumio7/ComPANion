@@ -45,8 +45,10 @@ public class ProjectileAttack : MonoBehaviour
                 = Vector2.MoveTowards(transform.position, _shootPoint, -shootSpeed / 10);
         }
 
-        if (this.transform.position != _shootPoint) return;
-        _lm.TakeDamage();
+        if (this.transform.position == _target.transform.position)
+            _lm.TakeDamage();
+        
+        if(this.transform.position != _shootPoint) return;
         Destroy(gameObject);
     }
 
