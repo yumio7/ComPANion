@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -12,8 +13,13 @@ public class LevelManager : MonoBehaviour
     
     [SerializeField] private float totalCookTime = 60.0f;
 
-    [Header("UI")] [SerializeField] private Image cookBar;
-    [Header("UI")] [SerializeField] private Image healthBar;
+    [Header("UI")] 
+    [SerializeField] private Image cookBar;
+    [SerializeField] private Image healthBar;
+
+    // [Header("End Scenes")] 
+    // [SerializeField] public Scene winScene;
+    // [SerializeField] public Scene lossScene;
     
     private float _cookPercent;
     private float _cookTime;
@@ -57,9 +63,9 @@ public class LevelManager : MonoBehaviour
         _cookPercent = (_actualCookTime / totalCookTime) * 100;
         cookBar.fillAmount = _cookPercent / 100;
         _cookTime += Time.deltaTime;
-        HealDamage();
 
         if (!(_cookTime >= 20.0f)) return;
+        HealDamage();
         _cb.letHimCook = false;
         _cookTime = 0.0f;
     }
@@ -71,6 +77,7 @@ public class LevelManager : MonoBehaviour
             print("you fucking LOSELSOELOSELSOESLELO");
         }
         // TODO: add game over scene
+        SceneManager.LoadScene("Scenes/LossScene");
     }
 
     private void GameWon()
@@ -80,6 +87,7 @@ public class LevelManager : MonoBehaviour
             print("you fucking win ayayyyayayayyaayyaya");
         }
         // TODO: add game won scene
+        SceneManager.LoadScene("Scenes/WinScene");
     }
 
     public void TakeDamage()

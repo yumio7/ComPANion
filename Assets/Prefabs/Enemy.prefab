@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 1
   distance: 5
   projectile: {fileID: 4660931868596380981, guid: 20e42e8ce8c396545b5d68a71e28f127, type: 3}
+  throwDistance: 2
   badVegetableSprite: {fileID: 21300000, guid: 2178294dc950cf946a1490d832dd7f91, type: 3}
   ratSprite: {fileID: 21300000, guid: 407e032d5b8c9954091188dbfeff078e, type: 3}
   badChefSprite: {fileID: 21300000, guid: 03a37862cdeef0946b23fa0987fa6761, type: 3}
